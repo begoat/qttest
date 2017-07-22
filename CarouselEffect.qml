@@ -3,7 +3,7 @@ import QtQuick 2.0
 Rectangle {
     width: 640
     height: 360
-    color: "grey"
+    color: "blue"
     PathView {
         id: view
         width: parent.width

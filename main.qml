@@ -13,29 +13,34 @@ ApplicationWindow {
     header:
         Row {
         width: root.width
+
         TabBar {
             id: tabBar_header
             currentIndex: swipeView.currentIndex
             anchors.left: parent.left
+            background: Rectangle {
+                color: "#3E3E3E"
+            }
+
             CustomTabButton {
                 texttext.text: "游戏库"
-                imageimage.source: "qrc:/image/pic2.jpg"
-                imageimage.opacity: 0.3
+                //                imageimage.source: ""
+                //                imageimage.opacity: 0.3
             }
             CustomTabButton {
                 texttext.text: "商城"
-                imageimage.source: "qrc:/image/pic2.jpg"
-                imageimage.opacity: 0.3
+                //                imageimage.source: ""
+                //                imageimage.opacity: 0.3
             }
             CustomTabButton {
                 texttext.text: "社区"
-                imageimage.source: "qrc:/image/pic2.jpg"
-                imageimage.opacity: 0.3
+                //                imageimage.source: ""
+                //                imageimage.opacity: 0.3
             }
             CustomTabButton {
                 texttext.text: "创意工坊"
-                imageimage.source: "qrc:/image/pic2.jpg"
-                imageimage.opacity: 0.3
+                //                imageimage.source: ""
+                //                imageimage.opacity: 0.3
             }
         }
         Row {
@@ -119,5 +124,4 @@ ApplicationWindow {
 
         }
     }
-
 }

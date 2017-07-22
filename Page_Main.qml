@@ -10,7 +10,7 @@ Page {
         y: 59
         width: root.contentWidth
         height: root.contentHeight - 59
-        color: "grey"
+        color: "#D8D8D8"
         Text {
            text: "This is a test"
         }
