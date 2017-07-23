@@ -22,14 +22,23 @@ ApplicationWindow {
             anchors.right: parent.right
             anchors.leftMargin: 50
             anchors.rightMargin: 50
-            color: "#353535"
+            color: "transparent"
             height: 76
-            Text {
+            Rectangle{
+                width: 333
+                height: 76
+                color: "transparent"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
-                text: "Game Hall"
-                color: "yellow"
-                font.pixelSize: 36
+                border.color: "#63FF00"
+                border.width: 1
+                Text {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: "Game Hall"
+                    color: "yellow"
+                    font.pixelSize: 36
+                }
             }
         }
         Rectangle {
