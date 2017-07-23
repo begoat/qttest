@@ -24,21 +24,54 @@ TabButton {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             text: "111"
-            font.family: "Times"
+//            font.family: "Times"
             color: "#7ED321"
             font.pixelSize:  30
+
+            PropertyAnimation {
+                id: colortowhite;
+                target: texttext;
+                property: "color";
+                to: "#D8D8D8"
+                duration: 200
+                easing.type: Easing.OutCubic
+            }
+            PropertyAnimation {
+                id: styletosunken;
+                target: texttext;
+                property: "style";
+                to: "Text.Sunken"
+                duration: 200
+                easing.type: Easing.OutCubic
+            }
+            PropertyAnimation {
+                id: colortogreen;
+                target: texttext;
+                property: "color";
+                to: "#7ED321"
+                duration: 200
+                easing.type: Easing.InCubic
+            }
+            PropertyAnimation {
+                id: styletonormal;
+                target: texttext;
+                property: "style";
+                to: "Text.Normal"
+                duration: 200
+                easing.type: Easing.InCubic
+            }
 
             MouseArea {
                 anchors.fill: parent
                 hoverEnabled: true
                 propagateComposedEvents: true
-                onEntered: {
-                    texttext.color = "#D8D8D8" // 颜色还需要改成设计的颜色
-                    texttext.style = Text.Sunken
+                onEntered: { // 进入减速曲线
+                    colortowhite.running = true
+                    styletosunken.running = true
                 }
-                onExited: {
-                    texttext.color = "#7ED321"
-                    texttext.style = Text.Normal
+                onExited: {  // 退出加速曲线
+                    colortogreen.running = true
+                    styletonormal.running = true
                 }
                 onClicked: mouse.accepted = false
                 onPressed: mouse.accepted = false;

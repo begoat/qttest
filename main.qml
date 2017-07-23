@@ -126,7 +126,7 @@ ApplicationWindow {
 
                     Text {
                         text: "Username"
-                        font.family: "ubuntu"
+//                        font.family: "ubuntu"
                         font.bold: true
                         color: "white"
                         font.pointSize: 40
