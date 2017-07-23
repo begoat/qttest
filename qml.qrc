@@ -8,6 +8,7 @@
         <file>EllipseType.qml</file>
         <file>ModelType.qml</file>
         <file>CarouselEffect.qml</file>
+        <file>GameModel.qml</file>
     </qresource>
     <qresource prefix="/image">
         <file>pic3.jpg</file>
@@ -18,5 +19,16 @@
         <file>ic_mail_outline_white_48dp_2x.png</file>
         <file>ic_settings_white_48dp_2x.png</file>
         <file>ic_account_circle_white_24dp_2x.png</file>
+    </qresource>
+    <qresource prefix="/gamemodel">
+        <file>DreamWest.jpg</file>
+        <file>fastandfurious.jpg</file>
+        <file>Kunfupanda.jpg</file>
+        <file>LegendsOfThreeKingdoms.jpg</file>
+        <file>NBA2KJames.jpg</file>
+        <file>NeedForSpeed.jpg</file>
+        <file>paopaocar.jpg</file>
+        <file>qq.jpg</file>
+        <file>wechat.jpg</file>
     </qresource>
 </RCC>

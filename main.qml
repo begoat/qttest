@@ -6,8 +6,8 @@ import QtQuick.Window 2.2
 ApplicationWindow {
     id: root
     visible: true
-    width: Screen.desktopAvailableWidth
-    height: Screen.desktopAvailableHeight
+    width: 1920
+    height: 1080
     minimumWidth: 1300
     minimumHeight: 500
     title: qsTr("Game Center Dev")
@@ -17,13 +17,13 @@ ApplicationWindow {
         anchors.left: parent.left
         anchors.right: parent.right
         Rectangle {
-            width: root.width - 100
+            width: root.width - 108
+            height: 76
+            color: "#3E3E3E"
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.leftMargin: 50
-            anchors.rightMargin: 50
-            color: "transparent"
-            height: 76
+            anchors.leftMargin: 53
+            anchors.rightMargin: 55
             Rectangle{
                 width: 333
                 height: 76
@@ -33,64 +33,49 @@ ApplicationWindow {
                 border.color: "#63FF00"
                 border.width: 1
                 Text {
+                    color: "yellow"
+                    font.pixelSize: 36
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     text: "Game Hall"
-                    color: "yellow"
-                    font.pixelSize: 36
                 }
             }
         }
         Rectangle {
             y: 76
-            anchors.left: parent.left
-            anchors.right: parent.right
-            width: root.width - 100
+            width: root.width - 108
             height: 59
-            anchors.leftMargin: 50
-            anchors.rightMargin: 50
             border.color: "#979797"
             border.width: 1
             color: "#3E3E3E"
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: 53
+            anchors.rightMargin: 55
             Row {
-//                y:76
-                width: root.width - 100
+                width: parent.width
                 anchors.left: parent.left
                 anchors.right: parent.right
-
                 TabBar {
                     id: tabBar_header
                     currentIndex: swipeView.currentIndex
                     anchors.left: parent.left
-
-                    background: Rectangle {
-                        color: "#3E3E3E"
-                    }
-
                     CustomTabButton {
                         texttext.text: "游戏库"
-                        //                imageimage.source: ""
-                        //                imageimage.opacity: 0.3
                     }
                     CustomTabButton {
                         texttext.text: "商城"
-                        //                imageimage.source: ""
-                        //                imageimage.opacity: 0.3
                     }
                     CustomTabButton {
                         texttext.text: "社区"
-                        //                imageimage.source: ""
-                        //                imageimage.opacity: 0.3
                     }
                     CustomTabButton {
                         texttext.text: "创意工坊"
-                        //                imageimage.source: ""
-                        //                imageimage.opacity: 0.3
                     }
                 }
-                Row {
+                Row { // 有个警告 没事的吧 // image 要改 不仅仅是居中 还有动画 // 如果是多条站内信，需要自己设置一个动画
                     anchors.right:parent.right
-                    spacing: 20
+                    spacing: 21
                     Image {
                         source: "qrc:/image/ic_mail_outline_white_48dp_2x.png"
                         width: 50
