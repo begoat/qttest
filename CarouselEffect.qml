@@ -10,8 +10,6 @@ Rectangle {
         height: parent.height + y
         y: -33
         focus: true
-        Keys.onLeftPressed: decrementCurrentIndex()
-        Keys.onRightPressed: incrementCurrentIndex()
         preferredHighlightBegin: 0
         preferredHighlightEnd: 0
         highlightRangeMode: PathView.StrictlyEnforceRange

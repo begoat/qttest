@@ -7,7 +7,7 @@ Page {
     contentWidth: Screen.desktopAvailableWidth
     contentHeight: Screen.desktopAvailableHeight
     Rectangle {
-        y: 59
+        y: 135
         width: root.contentWidth
         height: root.contentHeight - 59
         color: "grey"

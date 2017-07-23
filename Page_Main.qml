@@ -6,13 +6,19 @@ Page {
     id: root
     contentWidth: Screen.desktopAvailableWidth
     contentHeight: Screen.desktopAvailableHeight
+
     Rectangle {
-        y: 59
+        anchors.left: parent.left
+        anchors.leftMargin: 50
+        anchors.right: parent.right
+        anchors.rightMargin: 50
+        y: 135
         width: root.contentWidth
-        height: root.contentHeight - 59
+        height: root.contentHeight - 135
         color: "#D8D8D8"
         Text {
            text: "This is a test"
         }
     }
+
 }
