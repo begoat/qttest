@@ -31,4 +31,7 @@
         <file>qq.jpg</file>
         <file>wechat.jpg</file>
     </qresource>
+    <qresource prefix="/icontffset">
+        <file>Pe-icon-7-stroke.ttf</file>
+    </qresource>
 </RCC>

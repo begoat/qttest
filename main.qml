@@ -75,54 +75,65 @@ ApplicationWindow {
                 }
                 Row { // 有个警告 没事的吧 // image 要改 不仅仅是居中 还有动画 // 如果是多条站内信，需要自己设置一个动画
                     anchors.right:parent.right
+                    anchors.top: parent.top
+                    anchors.topMargin: 5
                     spacing: 21
-                    Image {
-                        source: "qrc:/image/ic_mail_outline_white_48dp_2x.png"
-                        width: 50
-                        height: 50
+                    FontLoader {id: iconset; source:"qrc:/icontffset/Pe-icon-7-stroke.ttf"}
+                    Text {
+                        id: icon1
+                        text: "\ue639"
+                        font.family: iconset.name
+                        color: "white"
+                        font.pixelSize: 50
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: {
-                                console.log("1")
+                            hoverEnabled: true
+                            onEntered: {
+                                color: "white"
+                                console.log("Entered")
+                                icon1.font.pixelSize = 60
+                                icon1.font.weight = Font.Black
+                                icon1.color = "red"
+                            }
+                            onExited: {
+                                console.log("Exited")
                             }
                         }
                     }
 
-                    Image {
-                        source: "qrc:/image/ic_dashboard_white_48dp_2x.png"
-                        width: 50
-                        height: 50
+                    Text {
+                        text: "\ue6c4"
+                        font.family: iconset.name
+                        color: "white"
+                        font.pixelSize: 50
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: {
-                                console.log("2")
+                            hoverEnabled: true
+                            onEntered: {
+                                console.log("Entered")
+                            }
+                            onExited: {
+                                console.log("Exited")
+                            }
+                        }
+                    }
+                    Text {
+                        text: "\ue605"
+                        font.family: iconset.name
+                        color: "white"
+                        font.pixelSize: 50
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onEntered: {
+                                console.log("Entered")
+                            }
+                            onExited: {
+                                console.log("Exited")
                             }
                         }
                     }
 
-                    Image {
-                        source: "qrc:/image/ic_settings_white_48dp_2x.png"
-                        width: 50
-                        height: 50
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                console.log("3")
-                            }
-                        }
-                    }
-
-                    Image {
-                        source: "qrc:/image/ic_account_circle_white_24dp_2x.png"
-                        width: 50
-                        height: 50
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                console.log("4")
-                            }
-                        }
-                    }
 
                     Text {
                         text: "Username"
