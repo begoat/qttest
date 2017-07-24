@@ -32,7 +32,7 @@ TabButton {
                 id: colortowhite;
                 target: texttext;
                 property: "color";
-                to: "#D8D8D8"
+                to: "#66B2FF"
                 duration: 200
                 easing.type: Easing.OutCubic
             }

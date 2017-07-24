@@ -14,10 +14,8 @@ ApplicationWindow {
 
     header:
         Item {
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.right: parent.right
         Rectangle {
+            id: title
             width: root.width - 108
             height: 76
             color: "#3E3E3E"
@@ -29,32 +27,33 @@ ApplicationWindow {
                 width: 333
                 height: 76
                 color: "transparent"
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
                 border.color: "#63FF00"
                 border.width: 1
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
                 Text {
+                    text: "Game Hall"
                     color: "yellow"
-                    font.pixelSize: 36
+                    font.pixelSize: 50
+                    font.bold: true
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
-                    text: "Game Hall"
                 }
             }
         }
         Rectangle {
+            id: bar
             width: root.width - 108
             height: 59
+            color: "#3E3E3E"
             border.color: "#979797"
             border.width: 1
-            color: "#3E3E3E"
             anchors.top: parent.top
             anchors.topMargin: 76
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.leftMargin: 53
             anchors.rightMargin: 55
-
             TabBar {
                 id: tabBar_header
                 currentIndex: swipeView.currentIndex
@@ -72,29 +71,29 @@ ApplicationWindow {
                     texttext.text: "创意工坊"
                 }
             }
-            Item {// 用 Row 的 话图标变大由于 spacing: 的 缘故 会影响到其他图标
+            Item {
                 // 如果是多条站内信，需要自己设置一个动画
                 id: iconlist
                 height: 59
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.top: parent.top
-                FontLoader {id: iconset; source:"qrc:/icontffset/Pe-icon-7-stroke.ttf"}
+                FontLoader { id: iconset; source:"qrc:/icontffset/Pe-icon-7-stroke.ttf" }
                 Text {
                     id: mailIcon
-                    anchors.right:account.left
-                    anchors.rightMargin: 90
-                    anchors.verticalCenter: parent.verticalCenter
                     text: "\ue639"
-                    font.family: iconset.name
                     color: "white"
                     font.pixelSize: 50
+                    font.family: iconset.name
+                    anchors.verticalCenter: account.verticalCenter // both horizontalCenter and verticalCenter can define a line
+                    anchors.horizontalCenter: account.left
+                    anchors.horizontalCenterOffset: -130
                     MouseArea {
                         anchors.fill: parent
                         hoverEnabled: true
                         onEntered: {
                             console.log("Entered")
-                            mailIcon.font.pixelSize = 80
+                            mailIcon.font.pixelSize = 65
                             mailIcon.color = "red"
                         }
                         onExited: {
@@ -102,50 +101,43 @@ ApplicationWindow {
                         }
                     }
                 }
-                Item {
-                    anchors.top: parent.top
-                    //                    anchors.right: account.left
-                    anchors.verticalCenter: parent.verticalCenter
+                Text {
+                    id: settingIcon
+                    text: "\ue6c4"
+                    color: "white"
+                    font.pixelSize: 50
+                    font.family: iconset.name
+                    anchors.verticalCenter: account.verticalCenter // both horizontalCenter and verticalCenter can define a line
                     anchors.horizontalCenter: account.left
-                    anchors.horizontalCenterOffset: -20
-                    Text {
-                        anchors.right: parent.right
-                        anchors.verticalCenter: parent.verticalCenter
-                        id: settingIcon
-                        text: "\ue6c4"
-                        font.family: iconset.name
-                        //                        anchors.right: account.left
-                        color: "white"
-                        font.pixelSize: 50
-                        MouseArea {
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            onEntered: {
-                                console.log("Entered")
-                                settingIcon.font.pixelSize = 80
-                                settingIcon.color = "red"
-                            }
-                            onExited: {
-                                console.log("Exited")
-                            }
+                    anchors.horizontalCenterOffset: -60
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onEntered: {
+                            console.log("Entered")
+                            settingIcon.font.pixelSize = 65
+                            settingIcon.color = "red"
+                        }
+                        onExited: {
+                            console.log("Exited")
                         }
                     }
                 }
                 Rectangle {
                     id: account
-                    width: usernameIcon.paintedWidth + 100 // indefinite because of the text pixelSize
+                    width: usernameIcon.paintedWidth + 100 // can dynmaic change according to the paintedWidth of username
+                    border.width: 1
+                    border.color: "#979797"
+                    color: "transparent"
                     anchors.top: parent.top
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
-                    color: "transparent"
-                    border.width: 1
-                    border.color: "#979797"
                     Text {
                         id: accountIcon
                         text: "\ue605"
-                        font.family: iconset.name
                         color: "white"
                         font.pixelSize: 50
+                        font.family: iconset.name
                         anchors.right: usernameIcon.left
                         anchors.rightMargin: 21
                         anchors.verticalCenter: parent.verticalCenter
@@ -164,13 +156,23 @@ ApplicationWindow {
                     Text {
                         id: usernameIcon
                         text: "Username"
-                        font.bold: true
                         color: "white"
+                        height: 50
+                        font.bold: true
                         font.pointSize: 40
                         anchors.right: parent.right
                         anchors.rightMargin: 9
                         anchors.verticalCenter: parent.verticalCenter
-                        height: 50
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onEntered: {
+                                console.log("Entered")
+                            }
+                            onExited: {
+                                console.log("Exited")
+                            }
+                        }
                     }
                 }
 
