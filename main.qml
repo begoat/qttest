@@ -133,7 +133,7 @@ ApplicationWindow {
                 }
                 Rectangle {
                     id: account
-                    width: 300 // indefinite because of the text pixelSize
+                    width: usernameIcon.paintedWidth + 100 // indefinite because of the text pixelSize
                     anchors.top: parent.top
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
