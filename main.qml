@@ -79,47 +79,89 @@ ApplicationWindow {
                 anchors.right: parent.right
                 anchors.top: parent.top
                 FontLoader { id: iconset; source:"qrc:/icontffset/Pe-icon-7-stroke.ttf" }
-                Text {
-                    id: mailIcon
-                    text: "\ue639"
-                    color: "white"
-                    font.pixelSize: 50
-                    font.family: iconset.name
+                Rectangle {
+                    width: mailIcon.paintedWidth
+                    height: mailIcon.paintedHeight
+                    color: "red"
                     anchors.verticalCenter: account.verticalCenter // both horizontalCenter and verticalCenter can define a line
                     anchors.horizontalCenter: account.left
                     anchors.horizontalCenterOffset: -130
-                    MouseArea {
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        onEntered: {
-                            console.log("Entered")
-                            mailIcon.font.pixelSize = 65
-                            mailIcon.color = "red"
+                    Text {
+                        id: mailIcon
+                        text: "\ue639"
+                        color: "white"
+                        font.pixelSize: 59
+                        font.family: iconset.name
+                        NumberAnimation {
+                            id: sizeTo65
+                            target: mailIcon
+                            property: "font.pixelSize"
+                            to: 65
+                            duration: 200
+                            easing.type: Easing.OutQuad
                         }
-                        onExited: {
-                            console.log("Exited")
+                        PropertyAnimation {
+                            id: colortoRed;
+                            target: mailIcon;
+                            property: "color";
+                            to: "red"
+                            duration: 200
+                            easing.type: Easing.OutQuad
+                        }
+                        NumberAnimation {
+                            id: sizeTo50
+                            target: mailIcon
+                            property: "font.pixelSize"
+                            to: 50
+                            duration: 200
+                            easing.type: Easing.InQuad
+                        }
+                        PropertyAnimation {
+                            id: colortoWhite;
+                            target: mailIcon;
+                            property: "color";
+                            to: "white"
+                            duration: 200
+                            easing.type: Easing.InQuad
+                        }
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onEntered: {
+                                sizeTo65.running = true
+                                colortoRed.running = true
+                            }
+                            onExited: {
+                                sizeTo50.running = true
+                                colortoWhite.running = true
+                            }
                         }
                     }
                 }
-                Text {
-                    id: settingIcon
-                    text: "\ue6c4"
-                    color: "white"
-                    font.pixelSize: 50
-                    font.family: iconset.name
+                Rectangle {
+                    width: settingIcon.paintedWidth
+                    height: settingIcon.paintedHeight
+                    color: "yellow"
                     anchors.verticalCenter: account.verticalCenter // both horizontalCenter and verticalCenter can define a line
                     anchors.horizontalCenter: account.left
                     anchors.horizontalCenterOffset: -60
-                    MouseArea {
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        onEntered: {
-                            console.log("Entered")
-                            settingIcon.font.pixelSize = 65
-                            settingIcon.color = "red"
-                        }
-                        onExited: {
-                            console.log("Exited")
+                    Text {
+                        id: settingIcon
+                        text: "\ue6c4"
+                        color: "white"
+                        font.pixelSize: 59
+                        font.family: iconset.name
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onEntered: {
+                                console.log("Entered")
+                                settingIcon.font.pixelSize = 65
+                                settingIcon.color = "red"
+                            }
+                            onExited: {
+                                console.log("Exited")
+                            }
                         }
                     }
                 }
@@ -136,7 +178,7 @@ ApplicationWindow {
                         id: accountIcon
                         text: "\ue605"
                         color: "white"
-                        font.pixelSize: 50
+                        font.pixelSize: 59
                         font.family: iconset.name
                         anchors.right: usernameIcon.left
                         anchors.rightMargin: 21
@@ -150,6 +192,7 @@ ApplicationWindow {
                             onExited: {
                                 console.log("Exited")
                             }
+
                         }
                     }
 
