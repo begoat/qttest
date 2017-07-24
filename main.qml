@@ -15,6 +15,7 @@ ApplicationWindow {
     header:
         Item {
         anchors.left: parent.left
+        anchors.top: parent.top
         anchors.right: parent.right
         Rectangle {
             width: root.width - 108
@@ -42,68 +43,78 @@ ApplicationWindow {
             }
         }
         Rectangle {
-            y: 76
             width: root.width - 108
             height: 59
             border.color: "#979797"
             border.width: 1
             color: "#3E3E3E"
+            anchors.top: parent.top
+            anchors.topMargin: 76
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.leftMargin: 53
             anchors.rightMargin: 55
-            Row {
-                width: parent.width
+
+            TabBar {
+                id: tabBar_header
+                currentIndex: swipeView.currentIndex
+                anchors.left: parent.left
+                CustomTabButton {
+                    texttext.text: "游戏库"
+                }
+                CustomTabButton {
+                    texttext.text: "商城"
+                }
+                CustomTabButton {
+                    texttext.text: "社区"
+                }
+                CustomTabButton {
+                    texttext.text: "创意工坊"
+                }
+            }
+            Item {// 用 Row 的 话图标变大由于 spacing: 的 缘故 会影响到其他图标
+                // 如果是多条站内信，需要自己设置一个动画
+                id: iconlist
+                height: 59
                 anchors.left: parent.left
                 anchors.right: parent.right
-                TabBar {
-                    id: tabBar_header
-                    currentIndex: swipeView.currentIndex
-                    anchors.left: parent.left
-                    CustomTabButton {
-                        texttext.text: "游戏库"
-                    }
-                    CustomTabButton {
-                        texttext.text: "商城"
-                    }
-                    CustomTabButton {
-                        texttext.text: "社区"
-                    }
-                    CustomTabButton {
-                        texttext.text: "创意工坊"
+                anchors.top: parent.top
+                FontLoader {id: iconset; source:"qrc:/icontffset/Pe-icon-7-stroke.ttf"}
+                Text {
+                    id: mailIcon
+                    anchors.right:account.left
+                    anchors.rightMargin: 90
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: "\ue639"
+                    font.family: iconset.name
+                    color: "white"
+                    font.pixelSize: 50
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onEntered: {
+                            console.log("Entered")
+                            mailIcon.font.pixelSize = 80
+                            mailIcon.color = "red"
+                        }
+                        onExited: {
+                            console.log("Exited")
+                        }
                     }
                 }
-                Row { // 有个警告 没事的吧 // image 要改 不仅仅是居中 还有动画 // 如果是多条站内信，需要自己设置一个动画
-                    anchors.right:parent.right
+                Item {
                     anchors.top: parent.top
-                    anchors.topMargin: 5
-                    spacing: 21
-                    FontLoader {id: iconset; source:"qrc:/icontffset/Pe-icon-7-stroke.ttf"}
+                    //                    anchors.right: account.left
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: account.left
+                    anchors.horizontalCenterOffset: -20
                     Text {
-                        id: icon1
-                        text: "\ue639"
-                        font.family: iconset.name
-                        color: "white"
-                        font.pixelSize: 50
-                        MouseArea {
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            onEntered: {
-                                color: "white"
-                                console.log("Entered")
-                                icon1.font.pixelSize = 60
-                                icon1.font.weight = Font.Black
-                                icon1.color = "red"
-                            }
-                            onExited: {
-                                console.log("Exited")
-                            }
-                        }
-                    }
-
-                    Text {
+                        anchors.right: parent.right
+                        anchors.verticalCenter: parent.verticalCenter
+                        id: settingIcon
                         text: "\ue6c4"
                         font.family: iconset.name
+                        //                        anchors.right: account.left
                         color: "white"
                         font.pixelSize: 50
                         MouseArea {
@@ -111,17 +122,33 @@ ApplicationWindow {
                             hoverEnabled: true
                             onEntered: {
                                 console.log("Entered")
+                                settingIcon.font.pixelSize = 80
+                                settingIcon.color = "red"
                             }
                             onExited: {
                                 console.log("Exited")
                             }
                         }
                     }
+                }
+                Rectangle {
+                    id: account
+                    width: 300 // indefinite because of the text pixelSize
+                    anchors.top: parent.top
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: "transparent"
+                    border.width: 1
+                    border.color: "#979797"
                     Text {
+                        id: accountIcon
                         text: "\ue605"
                         font.family: iconset.name
                         color: "white"
                         font.pixelSize: 50
+                        anchors.right: usernameIcon.left
+                        anchors.rightMargin: 21
+                        anchors.verticalCenter: parent.verticalCenter
                         MouseArea {
                             anchors.fill: parent
                             hoverEnabled: true
@@ -134,17 +161,19 @@ ApplicationWindow {
                         }
                     }
 
-
                     Text {
+                        id: usernameIcon
                         text: "Username"
-//                        font.family: "ubuntu"
                         font.bold: true
                         color: "white"
                         font.pointSize: 40
+                        anchors.right: parent.right
+                        anchors.rightMargin: 9
+                        anchors.verticalCenter: parent.verticalCenter
                         height: 50
                     }
-
                 }
+
             }
         }
     }

@@ -60,12 +60,6 @@ Page {
                         anchors.fill: parent
                         hoverEnabled: true
                         propagateComposedEvents: true
-                        onEntered: {
-                            scroolBar.font.colo
-                        }
-                        onExited: {
-
-                        }
                         onClicked: mouse.accepted = false
                         onPressed: mouse.accepted = false;
                         onReleased: mouse.accepted = false;
