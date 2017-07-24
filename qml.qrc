@@ -5,20 +5,9 @@
         <file>CustomTabButton.qml</file>
         <file>Page_Main.qml</file>
         <file>Page_Store.qml</file>
-        <file>EllipseType.qml</file>
-        <file>ModelType.qml</file>
-        <file>CarouselEffect.qml</file>
         <file>GameModel.qml</file>
-    </qresource>
-    <qresource prefix="/image">
-        <file>pic3.jpg</file>
-        <file>pic1.jpg</file>
-        <file>pic2.jpg</file>
-        <file>ic_contact_mail_white_48dp_2x.png</file>
-        <file>ic_dashboard_white_48dp_2x.png</file>
-        <file>ic_mail_outline_white_48dp_2x.png</file>
-        <file>ic_settings_white_48dp_2x.png</file>
-        <file>ic_account_circle_white_24dp_2x.png</file>
+        <file>IconRect.qml</file>
+        <file>Username.qml</file>
     </qresource>
     <qresource prefix="/gamemodel">
         <file>DreamWest.jpg</file>

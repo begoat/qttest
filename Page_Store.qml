@@ -4,16 +4,20 @@ import QtQuick.Window 2.2
 
 Page {
     id: root
-    contentWidth: Screen.desktopAvailableWidth
-    contentHeight: Screen.desktopAvailableHeight
+    contentWidth: 1920
+    contentHeight: 1080
     Rectangle {
+        anchors.left: parent.left
+        anchors.leftMargin: 53
+        anchors.right: parent.right
+        anchors.rightMargin: 55
         y: 135
         width: root.contentWidth
-        height: root.contentHeight - 59
-        color: "grey"
-        CarouselEffect {
-
+        height: root.contentHeight - 190
+        color: "#D8D8D8"
+        Text {
+            text: "This is Page TWO"
+            font.pixelSize: 50
         }
-
     }
 }

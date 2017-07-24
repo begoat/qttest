@@ -1,7 +1,6 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
-import QtQuick.Window 2.2
 
 ApplicationWindow {
     id: root
@@ -55,7 +54,7 @@ ApplicationWindow {
             anchors.leftMargin: 53
             anchors.rightMargin: 55
             TabBar {
-                id: tabBar_header
+                id: tabBarHeader
                 currentIndex: swipeView.currentIndex
                 anchors.left: parent.left
                 CustomTabButton {
@@ -79,144 +78,26 @@ ApplicationWindow {
                 anchors.right: parent.right
                 anchors.top: parent.top
                 FontLoader { id: iconset; source:"qrc:/icontffset/Pe-icon-7-stroke.ttf" }
-                Rectangle {
-                    width: mailIcon.paintedWidth
-                    height: mailIcon.paintedHeight
-                    color: "red"
+
+                IconRect { // embed it into the module component
+                    id: mailicon
+                    iconcode:"\ue639"
                     anchors.verticalCenter: account.verticalCenter // both horizontalCenter and verticalCenter can define a line
                     anchors.horizontalCenter: account.left
                     anchors.horizontalCenterOffset: -130
-                    Text {
-                        id: mailIcon
-                        text: "\ue639"
-                        color: "white"
-                        font.pixelSize: 59
-                        font.family: iconset.name
-                        NumberAnimation {
-                            id: sizeTo65
-                            target: mailIcon
-                            property: "font.pixelSize"
-                            to: 65
-                            duration: 200
-                            easing.type: Easing.OutQuad
-                        }
-                        PropertyAnimation {
-                            id: colortoRed;
-                            target: mailIcon;
-                            property: "color";
-                            to: "red"
-                            duration: 200
-                            easing.type: Easing.OutQuad
-                        }
-                        NumberAnimation {
-                            id: sizeTo50
-                            target: mailIcon
-                            property: "font.pixelSize"
-                            to: 50
-                            duration: 200
-                            easing.type: Easing.InQuad
-                        }
-                        PropertyAnimation {
-                            id: colortoWhite;
-                            target: mailIcon;
-                            property: "color";
-                            to: "white"
-                            duration: 200
-                            easing.type: Easing.InQuad
-                        }
-                        MouseArea {
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            onEntered: {
-                                sizeTo65.running = true
-                                colortoRed.running = true
-                            }
-                            onExited: {
-                                sizeTo50.running = true
-                                colortoWhite.running = true
-                            }
-                        }
-                    }
                 }
-                Rectangle {
-                    width: settingIcon.paintedWidth
-                    height: settingIcon.paintedHeight
-                    color: "yellow"
+
+                IconRect {
+                    id: settingicon
+                    iconcode:"\ue6c4"
                     anchors.verticalCenter: account.verticalCenter // both horizontalCenter and verticalCenter can define a line
                     anchors.horizontalCenter: account.left
                     anchors.horizontalCenterOffset: -60
-                    Text {
-                        id: settingIcon
-                        text: "\ue6c4"
-                        color: "white"
-                        font.pixelSize: 59
-                        font.family: iconset.name
-                        MouseArea {
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            onEntered: {
-                                console.log("Entered")
-                                settingIcon.font.pixelSize = 65
-                                settingIcon.color = "red"
-                            }
-                            onExited: {
-                                console.log("Exited")
-                            }
-                        }
-                    }
                 }
-                Rectangle {
+
+                Username {
                     id: account
-                    width: usernameIcon.paintedWidth + 100 // can dynmaic change according to the paintedWidth of username
-                    border.width: 1
-                    border.color: "#979797"
-                    color: "transparent"
-                    anchors.top: parent.top
-                    anchors.right: parent.right
-                    anchors.verticalCenter: parent.verticalCenter
-                    Text {
-                        id: accountIcon
-                        text: "\ue605"
-                        color: "white"
-                        font.pixelSize: 59
-                        font.family: iconset.name
-                        anchors.right: usernameIcon.left
-                        anchors.rightMargin: 21
-                        anchors.verticalCenter: parent.verticalCenter
-                        MouseArea {
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            onEntered: {
-                                console.log("Entered")
-                            }
-                            onExited: {
-                                console.log("Exited")
-                            }
-
-                        }
-                    }
-
-                    Text {
-                        id: usernameIcon
-                        text: "Username"
-                        color: "white"
-                        height: 50
-                        font.bold: true
-                        font.pointSize: 40
-                        anchors.right: parent.right
-                        anchors.rightMargin: 9
-                        anchors.verticalCenter: parent.verticalCenter
-                        MouseArea {
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            onEntered: {
-                                console.log("Entered")
-                            }
-                            onExited: {
-                                console.log("Exited")
-                            }
-                        }
-                    }
+                    username: "gamehall"
                 }
 
             }
@@ -226,7 +107,7 @@ ApplicationWindow {
     SwipeView {
         id: swipeView
         anchors.fill: parent
-        currentIndex: tabBar_header.currentIndex
+        currentIndex: tabBarHeader.currentIndex
 
         Page_Main{
 
