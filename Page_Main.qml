@@ -27,19 +27,57 @@ Page {
                     Image {
                         source: location; anchors.horizontalCenter: parent.horizontalCenter
                         width: item.width; height: item.width
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onEntered: {
+                                console.log("Entered the Image")
+                            }
+                            onExited:  {
+                                console.log("Exit the Image")
+                            }
+                            onDoubleClicked: {
+                                console.log("double Click the Image")
+                            }
+                        }
                     }
                     Text {
-                        text: name; anchors.horizontalCenter: parent.horizontalCenter
+                        id: gameName
+                        text: name
+                        font.pixelSize: 15
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        NumberAnimation {
+                            id: sizeTo30
+                            target: gameName
+                            property: "font.pixelSize"
+                            to: 30
+                            duration: 200
+                            easing.type: Easing.OutQuad
+                        }
+                        NumberAnimation {
+                            id: sizeTo15
+                            target: gameName
+                            property: "font.pixelSize"
+                            to: 15
+                            duration: 200
+                            easing.type: Easing.InQuad
+                        }
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onEntered: {
+                                sizeTo30.running = true
+                            }
+                            onExited:  {
+                                sizeTo15.running = true
+                            }
+                        }
                     }
                 }
             }
         }
 
         Rectangle{
-            // set highlight and focus
-//            Keys.onUpPressed: scrollBar.decrease()
-//            Keys.onDownPressed: scrollBar.increase()
-            focus: true
             color: "transparent"
             anchors.left: parent.left
             anchors.top: parent.top
