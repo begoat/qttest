@@ -52,7 +52,7 @@ Page {
                             property: "font.pixelSize"
                             to: 30
                             duration: 200
-                            easing.type: Easing.OutQuad
+                            easing.type: Easing.InOutCubic
                         }
                         NumberAnimation {
                             id: sizeTo15
@@ -60,7 +60,7 @@ Page {
                             property: "font.pixelSize"
                             to: 15
                             duration: 200
-                            easing.type: Easing.InQuad
+                            easing.type: Easing.InOutCubic
                         }
                         MouseArea {
                             anchors.fill: parent

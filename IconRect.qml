@@ -18,7 +18,7 @@ Rectangle {
             property: "font.pixelSize"
             to: 65
             duration: 200
-            easing.type: Easing.OutQuad
+            easing.type: Easing.InOutCubic
         }
         PropertyAnimation {
             id: colortoRed;
@@ -26,7 +26,7 @@ Rectangle {
             property: "color";
             to: "red"
             duration: 200
-            easing.type: Easing.OutQuad
+            easing.type: Easing.InOutCubic
         }
         NumberAnimation {
             id: sizeTo50
@@ -34,7 +34,7 @@ Rectangle {
             property: "font.pixelSize"
             to: 50
             duration: 200
-            easing.type: Easing.InQuad
+            easing.type: Easing.InOutCubic
         }
         PropertyAnimation {
             id: colortoWhite;
@@ -42,7 +42,7 @@ Rectangle {
             property: "color";
             to: "white"
             duration: 200
-            easing.type: Easing.InQuad
+            easing.type: Easing.InOutCubic
         }
         MouseArea {
             anchors.fill: parent

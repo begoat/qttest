@@ -34,7 +34,7 @@ TabButton {
                 property: "color";
                 to: "#66B2FF"
                 duration: 200
-                easing.type: Easing.OutCubic
+                easing.type: Easing.InOutCubic
             }
             PropertyAnimation {
                 id: styletosunken;
@@ -42,7 +42,7 @@ TabButton {
                 property: "style";
                 to: "Text.Sunken"
                 duration: 200
-                easing.type: Easing.OutCubic
+                easing.type: Easing.InOutCubic
             }
             PropertyAnimation {
                 id: colortogreen;
@@ -50,7 +50,7 @@ TabButton {
                 property: "color";
                 to: "#7ED321"
                 duration: 200
-                easing.type: Easing.InCubic
+                easing.type: Easing.InOutCubic
             }
             PropertyAnimation {
                 id: styletonormal;
@@ -58,7 +58,7 @@ TabButton {
                 property: "style";
                 to: "Text.Normal"
                 duration: 200
-                easing.type: Easing.InCubic
+                easing.type: Easing.InOutCubic
             }
 
             MouseArea {
