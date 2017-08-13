@@ -30,8 +30,7 @@ before_install:
 install:
   - |
     if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-        sudo apt-get install -qq qt59base &&
-        sudo apt-get install -qq qt59webengine &&
+        sudo apt-get install qt59* &&
         source /opt/qt59/bin/qt59-env.sh
     fi
 script:
