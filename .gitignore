@@ -1,0 +1,16 @@
+CMakeLists.txt.user
+CMakeFiles
+MakeFile
+GameHall_autogen
+
+# Mac
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

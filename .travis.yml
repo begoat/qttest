@@ -1,0 +1,49 @@
+language: C++
+
+matrix:
+  include:
+    - os: osx
+      #env: CONFIG=Release
+      compiler: clang
+      osx_image: xcode8.3
+
+    - os: linux
+      dist: trusty
+      sudo: required
+      #env: CONFIG=Release
+      compiler: gcc
+
+before_install:
+  - |
+    if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+      # https://launchpad.net/~beineri/+archive/ubuntu/opt-qt562-trusty
+      sudo add-apt-repository ppa:beineri/opt-qt59-trusty -y &&
+      sudo apt-get update -qq
+    fi
+  - |
+    if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+        brew update &&
+        brew upgrade cmake &&
+        brew install qt5 &&
+        chmod -R 755 /usr/local/opt/qt5/*
+    fi
+install:
+  - |
+    if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+        sudo apt-get install -qq qt59base &&
+        sudo apt-get install -qq qt59webengine &&
+        source /opt/qt59/bin/qt59-env.sh
+    fi
+script:
+  - echo $(ls /opt/qt59)
+  - mkdir build && cd build
+  - |
+    if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+    cmake -D CMAKE_PREFIX_PATH=$(QTDIR) .. &&
+        cmake --build .
+    fi
+  - |
+    if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+        cmake -D CMAKE_PREFIX_PATH=$(brew --prefix qt5) .. &&
+        cmake --build .
+    fi
