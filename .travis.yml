@@ -36,6 +36,8 @@ install:
     fi
 script:
   - echo $(ls /opt/qt59)
+  - echo $(ls /opt/qt59/lib/cmake)
+  - echo $QTDIR
   - mkdir build && cd build
   - |
     if [ "$TRAVIS_OS_NAME" = "linux" ]; then
