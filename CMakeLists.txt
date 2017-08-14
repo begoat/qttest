@@ -16,6 +16,6 @@ configure_file (
 
 find_package(Qt5 COMPONENTS Core Quick QuickControls2 REQUIRED)
 
-add_executable(GameHall MACOSX_BUNDLE "src/main.cpp")
+add_executable(${PROJECT_NAME} "src/main.cpp")
 
-target_link_libraries(GameHall Qt5::Core Qt5::Quick Qt5::QuickControls2)
+target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Quick Qt5::QuickControls2)
