@@ -49,5 +49,3 @@ deploy:
   on:
     repo: begoat/qttest
     tags: true
-
-
