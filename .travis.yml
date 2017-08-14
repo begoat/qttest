@@ -36,7 +36,9 @@ script:
       cmake -D CMAKE_PREFIX_PATH=$(brew --prefix qt5) .. &&
       make
       $(brew --prefix qt5)/bin/macdeployqt GameHall.app -qmldir=..
-      export RELEASE_APP_BUNDLE=$(pwd)/GameHall.app
+      zip -r GameHall.zip GameHall.app
+      export RELEASE_APP_BUNDLE=$(pwd)/GameHall.zip
+      echo $RELEASE_APP_BUNDLE
   fi
 deploy:
   provider: releases
