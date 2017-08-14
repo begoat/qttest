@@ -48,6 +48,5 @@ deploy:
   file: "${RELEASE_APP_BUNDLE}"
   on:
     repo: begoat/qttest
-    branches:
-        only:
-          - william-patch-1
+    tags: true
+
