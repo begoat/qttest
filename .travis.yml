@@ -1,51 +1,43 @@
 language: C++
-
 matrix:
   include:
-    - os: osx
-      #env: CONFIG=Release
-      compiler: clang
-      osx_image: xcode8.3
-
-    - os: linux
-      dist: trusty
-      sudo: required
-      #env: CONFIG=Release
-      compiler: gcc
-
+  - os: osx
+    compiler: clang
+    osx_image: xcode8.3
 before_install:
-  - |
-    if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-      # https://launchpad.net/~beineri/+archive/ubuntu/opt-qt562-trusty
-      sudo add-apt-repository ppa:beineri/opt-qt59-trusty -y &&
-      sudo apt-get update -qq
-    fi
-  - |
-    if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-        brew update &&
-        brew upgrade cmake &&
-        brew install qt5 &&
-        chmod -R 755 /usr/local/opt/qt5/*
-    fi
+- |
+  if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+    # https://launchpad.net/~beineri/+archive/ubuntu/opt-qt562-trusty
+    sudo add-apt-repository ppa:beineri/opt-qt59-trusty -y &&
+    sudo apt-get update -qq
+  fi
+- |
+  if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+      brew update &&
+      brew upgrade cmake &&
+      brew install qt5 &&
+      chmod -R 755 /usr/local/opt/qt5/*
+  fi
 install:
-  - |
-    if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-        sudo apt-get install -qq qt59base &&
-        sudo apt-get install -qq qt59quickcontrols2 && 
-        source /opt/qt59/bin/qt59-env.sh
-    fi
+- "if [ \"$TRAVIS_OS_NAME\" = \"linux\" ]; then\n    sudo apt-get install -qq qt59base
+  &&\n    sudo apt-get install -qq qt59quickcontrols2 && \n    source /opt/qt59/bin/qt59-env.sh\nfi\n"
 script:
-  - echo $(ls /opt/qt59)
-  - echo $(ls /opt/qt59/lib/cmake)
-  - echo $QTDIR
-  - mkdir build && cd build
-  - |
-    if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-    cmake -D CMAKE_PREFIX_PATH=$(QTDIR) .. &&
-        cmake --build .
-    fi
-  - |
-    if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-        cmake -D CMAKE_PREFIX_PATH=$(brew --prefix qt5) .. &&
-        cmake --build .
-    fi
+- mkdir build && cd build
+- |
+  if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+  cmake -D CMAKE_PREFIX_PATH=$(QTDIR) .. &&
+      cmake --build .
+  fi
+- |
+  if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+      cmake -D CMAKE_PREFIX_PATH=$(brew --prefix qt5) .. &&
+      cmake --build .
+      $(brew --prefix qt5)/bin/macdeployqt GameHall.app -qmldir=..
+  fi
+deploy:
+  provider: releases
+  api_key:
+    secure: N1HqA2dmrCl1+1m6jUeZE7boA2Ng8naqau1Hg2jRCdFfAKrOPax38OJlo4fjO79/KMXdLbFZd0YoBi+7bqQ60SIJ09PNJ7OZQJFurXXUNcc4cMyZw2s+dQiyYlvlw1M7kj7EC6fFNaFZhVVNPkfTbcGIG+9ntrLj/Out+6qGPvbtfopwxFbZQ4iEaXQ16pUNR1d9vwKxfkDetlFpd56B3P38LumyUIpam9E2D06W6gOvN1Yk5TR/1Ky7HyjbLJekAiZBxdxqJENaOdyj5/tkFy7pygMBgxtOfFl6Lqa8Y5Qrt+m5TytRAWl64rU+T7TQpVg2cpEUhzDtTcbD2a2DZdx6wMZDBk8VfSEWB/1nV+PjaQAkxTMhm/IvLmU+/Tn84wuK2VpljQJE6sLC+LOOnUdqRIsYP5oBIiTiQojP/UR1dEQ1KNpUtQnPbv3p63g5vDzyC0ls5+DYM+AhUEO59OwgETGHsGqDQAUrfv0C/rICT+59hidQKAU8zod4kbg6ACMihdwkBDXSjVvHgr9ohiWD3kzE9sTJ0tTFkd8t+qKxZRVwcySDy60orrQLrPfVQVEAAAcsMXGa9jBDBIoDk/mjXoWCDWZqB3vCjLaKbdBTLPrQDMPXQUaKWRzf5qQJzJgK/TLWCocXgyLuaV/vegH/hm6AiWKL8OsGAA4NzN4=
+  file: GameHall.app
+  on:
+    repo: begoat/qttest
