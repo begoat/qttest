@@ -29,12 +29,12 @@ script:
 - |
   if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   cmake -D CMAKE_PREFIX_PATH=$(QTDIR) .. &&
-      cmake --build .
+      make
   fi
 - |
   if [ "$TRAVIS_OS_NAME" = "osx" ]; then
       cmake -D CMAKE_PREFIX_PATH=$(brew --prefix qt5) .. &&
-      cmake --build .
+      make
       $(brew --prefix qt5)/bin/macdeployqt GameHall.app -qmldir=..
   fi
 deploy:

@@ -2,6 +2,7 @@ CMakeLists.txt.user
 CMakeFiles
 MakeFile
 GameHall_autogen
+build/*
 
 # Mac
 *.DS_Store
