@@ -14,8 +14,8 @@ configure_file (
         "${PROJECT_BINARY_DIR}/WatchDirPath.h"
 )
 
-find_package(Qt5 COMPONENTS Core Quick QuickControls2 REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 
-add_executable(GameHall MACOSX_BUNDLE "src/main.cpp")
+add_executable(GameHall MACOSX_BUNDLE "src/main.cpp" "script/QML/qml.qrc")
 
-target_link_libraries(GameHall Qt5::Core Qt5::Quick Qt5::QuickControls2)
+target_link_libraries(GameHall Qt5::Core Qt5::Quick)

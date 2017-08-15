@@ -1,7 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "WatchDirPath.h"
-#include <QQuickStyle>
 
 int main(int argc, char *argv[])
 {
@@ -11,10 +10,8 @@ int main(int argc, char *argv[])
     QString mainpath = WATCH_DIR_PATH;
     mainpath = mainpath.prepend("file:").append("/main.qml");
 
-    QQuickStyle::setStyle("Material");
-
     QQmlApplicationEngine engine;
-    engine.load(QUrl(mainpath));
+    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 
